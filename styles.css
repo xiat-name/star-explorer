@@ -1,0 +1,1094 @@
+/* 基础重置 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #050510;
+    color: #b8d4e8;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 星空背景粒子 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 15% 75%, rgba(255,200,150,0.9), transparent),
+        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 45% 85%, rgba(200,220,255,0.8), transparent),
+        radial-gradient(1px 1px at 55% 55%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 65% 15%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 80% 65%, rgba(255,180,120,0.7), transparent),
+        radial-gradient(1px 1px at 95% 25%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 5% 50%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 35% 90%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 75% 5%, rgba(220,200,255,0.8), transparent),
+        radial-gradient(1px 1px at 85% 45%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 12% 92%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 42% 28%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 62% 72%, rgba(255,220,180,0.6), transparent),
+        radial-gradient(1px 1px at 88% 12%, rgba(255,255,255,0.5), transparent);
+    pointer-events: none;
+    z-index: 0;
+    animation: twinkle 8s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+/* 导航 */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 16px 40px;
+    transition: background 0.3s ease;
+}
+
+.nav.scrolled {
+    background: rgba(5, 5, 16, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    color: rgba(184, 212, 232, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover { color: #b8d4e8; }
+
+/* Hero */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-visual {
+    width: 100%;
+    height: 100vh;
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 首页浮动按钮 */
+.hero-float-btn {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 28px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.5);
+    transition: all 0.3s ease;
+    animation: floatPulse 2s ease-in-out infinite;
+}
+
+.hero-float-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.6);
+}
+
+@keyframes floatPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(255, 107, 53, 0.5); }
+    50% { box-shadow: 0 4px 30px rgba(255, 107, 53, 0.8); }
+}
+
+/* 通用区块 */
+.section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.section.deep-blue {
+    background: linear-gradient(180deg, #060d1f 0%, #0a1628 50%, #060d1f 100%);
+}
+
+.section.light-blue {
+    background: linear-gradient(180deg, #0c1a30 0%, #102440 50%, #0c1a30 100%);
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.2), transparent);
+}
+
+.section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 50% 80%, rgba(0, 180, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 50%, rgba(60, 140, 200, 0.03) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(100, 200, 240, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+}
+
+/* 区块标题 */
+.section-title {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: -0.02em;
+    position: relative;
+    color: #e0f0ff;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #0088cc, #00b4ff);
+    border-radius: 2px;
+}
+
+.section-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #0066aa, #0099ee);
+    color: #fff;
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-left: 12px;
+    vertical-align: middle;
+}
+
+/* 项目介绍 */
+.about-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 20px;
+    padding: 48px;
+    backdrop-filter: blur(10px);
+}
+
+.about-welcome {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00d4ff;
+    margin-bottom: 24px;
+}
+
+.about-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(184, 212, 232, 0.85);
+    margin-bottom: 32px;
+}
+
+.planets-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.planet-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.planet-item:hover {
+    background: rgba(0, 180, 255, 0.08);
+    border-color: rgba(0, 180, 255, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 180, 255, 0.15), 0 0 20px rgba(0, 180, 255, 0.1);
+}
+
+.planet-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.planet-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.planet-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.planet-desc {
+    font-size: 12px;
+    color: rgba(184, 212, 232, 0.5);
+    line-height: 1.5;
+}
+
+.about-motto {
+    font-size: 15px;
+    color: rgba(184, 212, 232, 0.7);
+    line-height: 1.8;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.about-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 24px;
+    transition: all 0.3s ease;
+}
+
+.about-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.35);
+}
+
+/* 时间线 */
+.timeline-container {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, #0088cc, #00b4ff, transparent);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: calc(50% + 40px);
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: calc(50% + 40px);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background: #0088cc;
+    border-radius: 50%;
+    border: 3px solid #050510;
+    z-index: 2;
+    box-shadow: 0 0 12px rgba(0, 150, 230, 0.4);
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 400px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.timeline-phase {
+    font-size: 12px;
+    font-weight: 700;
+    color: #00d4ff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+}
+
+.timeline-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.timeline-date {
+    font-size: 14px;
+    font-weight: 600;
+    color: #00d4ff;
+    margin-bottom: 8px;
+}
+
+.timeline-content p {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.6);
+    line-height: 1.6;
+}
+
+/* 积分排名 */
+.ranking-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.ranking-tab {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 12px;
+    color: rgba(184, 212, 232, 0.7);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ranking-tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.ranking-tab.active {
+    background: linear-gradient(135deg, #0066aa, #0099ee);
+    border-color: transparent;
+    color: #fff;
+}
+
+.ranking-table {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 700px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+}
+
+.ranking-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 1fr 120px;
+    padding: 16px 24px;
+    background: rgba(0, 150, 230, 0.05);
+    border-bottom: 1px solid rgba(0, 150, 230, 0.12);
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(184, 212, 232, 0.5);
+}
+
+.ranking-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 1fr 120px;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.3s ease;
+    align-items: center;
+}
+
+.ranking-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.rank-col { text-align: center; font-weight: 700; }
+.name-col { font-weight: 600; }
+.dept2-col { font-size: 13px; color: rgba(184, 212, 232, 0.6); }
+.dept3-col { font-size: 13px; color: rgba(184, 212, 232, 0.5); }
+.score-col { text-align: right; font-weight: 700; color: #ff8c42; }
+
+.rank-1 { color: #ffd700; font-size: 18px; }
+.rank-2 { color: #c0c0c0; font-size: 16px; }
+.rank-3 { color: #cd7f32; font-size: 16px; }
+
+.ranking-note {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.my-points-link {
+    color: #ff8c42;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.my-points-link:hover { opacity: 0.8; }
+
+/* 积分规则 - 表格 */
+.rules-table-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.rules-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rules-table thead th {
+    background: rgba(0, 150, 230, 0.08);
+    padding: 16px 20px;
+    white-space: nowrap;
+}
+
+.rules-table thead th.col-link {
+    min-width: 240px;
+}
+
+.rules-table thead th.col-score {
+    min-width: 100px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(184, 212, 232, 0.85);
+    border-bottom: 1px solid rgba(0, 150, 230, 0.15);
+}
+
+.rules-table tbody td {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    vertical-align: top;
+    line-height: 1.6;
+}
+
+.rules-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.rules-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.rule-tag {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.rules-total {
+    background: rgba(0, 150, 230, 0.05);
+}
+
+.rules-total td {
+    border-top: 1px solid rgba(0, 150, 230, 0.15);
+    color: #ff8c42 !important;
+}
+
+/* 奖项设置 */
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.award-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.award-card.highlight {
+    background: linear-gradient(135deg, rgba(0, 150, 230, 0.08), rgba(255, 140, 66, 0.03));
+    border-color: rgba(0, 150, 230, 0.25);
+}
+
+.award-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 150, 230, 0.12);
+}
+
+.award-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.award-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.award-desc {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.7);
+    line-height: 1.8;
+}
+
+.award-desc strong {
+    color: #ff8c42;
+}
+
+/* 星球探索 */
+.planets-explorer {
+    display: flex;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 500px;
+    backdrop-filter: blur(10px);
+}
+
+.planet-nav {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(0, 150, 230, 0.08);
+    padding: 16px 0;
+}
+
+.planet-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: none;
+    border: none;
+    color: rgba(184, 212, 232, 0.6);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    text-align: left;
+}
+
+.planet-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.planet-nav-btn.active {
+    background: linear-gradient(135deg, #0066aa, #0099ee);
+    color: #fff;
+    border-left-color: #0099ee;
+}
+
+.planet-nav-icon {
+    font-size: 24px;
+}
+
+.planet-nav-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.planet-nav-name {
+    font-size: 15px;
+}
+
+.planet-panels {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.planet-panel {
+    display: none;
+}
+
+.planet-panel.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.planet-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.planet-panel-header .panel-icon {
+    font-size: 48px;
+}
+
+.planet-panel-header .panel-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.planet-panel-header h3 {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.planet-panel-header p {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.5);
+    margin-top: 4px;
+}
+
+.planet-panel-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.planet-card-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 150, 230, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.planet-card-item h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.planet-card-item p {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.7);
+    line-height: 1.7;
+}
+
+.planet-time {
+    font-size: 14px;
+    color: #ff8c42;
+}
+
+.points-list {
+    list-style: none;
+}
+
+.points-list li {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.7);
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.points-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #ff8c42;
+}
+
+.link {
+    color: #ff8c42;
+    text-decoration: none;
+}
+
+.link:hover { text-decoration: underline; }
+
+.link-btn {
+    display: inline-block;
+    color: #ff8c42;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 16px;
+    transition: opacity 0.2s ease;
+}
+
+.link-btn:hover { opacity: 0.8; }
+
+.planet-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.planet-info-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 150, 230, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.info-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ff8c42;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.info-value {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.85);
+    line-height: 1.6;
+}
+
+/* 星产品 */
+.product-hero {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.product-hero img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.product-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    display: flex;
+    justify-content: center;
+}
+
+.product-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.product-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.4);
+}
+
+/* 优秀作业展示 */
+.works-coming-soon {
+    text-align: center;
+    padding: 60px 32px;
+}
+
+.coming-soon-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+}
+
+.coming-soon-text {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ff8c42;
+    letter-spacing: 8px;
+    margin-bottom: 12px;
+}
+
+.coming-soon-sub {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.5);
+}
+
+.work-detail-card {
+    padding: 24px 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.work-detail-card:last-child {
+    border-bottom: none;
+}
+
+.work-detail-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFD700;
+    margin-bottom: 12px;
+}
+
+.work-detail-row {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.7);
+    padding: 4px 0;
+    line-height: 1.8;
+}
+
+.work-detail-label {
+    color: rgba(184, 212, 232, 0.4);
+    margin-right: 4px;
+}
+
+.works-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.works-tab {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 12px;
+    color: rgba(184, 212, 232, 0.7);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.works-tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.works-tab.active {
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    border-color: transparent;
+    color: #fff;
+}
+
+.works-board {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 150, 230, 0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.works-list {
+    display: none;
+}
+
+.works-list.active {
+    display: block;
+}
+
+.planet-visual-banner {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.planet-visual-banner img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.lab-detail-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #00b4ff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.lab-detail-link:hover {
+    opacity: 0.8;
+}
+
+/* 导航高亮 */
+.nav-link.active {
+    color: #00d4ff !important;
+}
+
+.work-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr 80px;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.work-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.work-row:last-child {
+    border-bottom: none;
+}
+
+.work-rank {
+    text-align: center;
+    font-weight: 700;
+    color: #ff8c42;
+    font-size: 16px;
+}
+
+.work-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.work-author {
+    font-size: 13px;
+    color: rgba(184, 212, 232, 0.6);
+}
+
+.work-score {
+    text-align: right;
+    font-weight: 700;
+    color: #ff8c42;
+}
+
+.works-link {
+    text-align: center;
+    margin-top: 24px;
+}
+
+/* 底部 */
+.footer {
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(0, 150, 230, 0.08);
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ff8c42;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: rgba(184, 212, 232, 0.5);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .planets-grid { grid-template-columns: repeat(2, 1fr); }
+    .awards-grid { grid-template-columns: 1fr; }
+    .timeline-line { left: 20px; }
+    .timeline-item { padding-right: 0; padding-left: 50px; }
+    .timeline-item:nth-child(even) { padding-left: 50px; }
+    .timeline-dot { left: 20px; }
+    .ranking-header, .ranking-row { grid-template-columns: 50px 1fr 1fr 1fr 70px; font-size: 11px; }
+    .rules-table { font-size: 12px; }
+    .rules-table thead th, .rules-table tbody td { padding: 10px 12px; }
+    
+    .planets-explorer { flex-direction: column; }
+    .planet-nav { 
+        flex-direction: row; 
+        width: 100%; 
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 150, 230, 0.08);
+    }
+    .planet-nav-btn { 
+        padding: 12px 16px; 
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+    }
+    .planet-nav-btn.active { border-bottom-color: #0099ee; }
+    .planet-panels { padding: 20px; }
+    .planet-info-grid { grid-template-columns: 1fr; }
+    .footer-content { flex-direction: column; gap: 12px; text-align: center; }
+    .work-row { grid-template-columns: 40px 1fr 80px; font-size: 12px; }
+    .work-author { display: none; }
+}
